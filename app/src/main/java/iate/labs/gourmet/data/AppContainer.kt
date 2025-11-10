@@ -1,16 +1,16 @@
 package iate.labs.gourmet.data
 
 import android.content.Context
-import iate.labs.gourmet.data.repository.ItemRecipeRepository
+import iate.labs.gourmet.data.repository.RecipeRepository
 import iate.labs.gourmet.data.repository.RecipesRepository
 
 interface AppContainer {
-    val itemsRepository: ItemRecipeRepository
+    val recipesRepository: RecipeRepository
 }
 
 
 class AppDataContainer(private val context: Context) : AppContainer {
-    override val itemsRepository: ItemRecipeRepository by lazy {
-        RecipesRepository(RecipeDatabase.getDatabase(context).itemDao())
+    override val recipesRepository: RecipeRepository by lazy {
+        RecipesRepository(RecipeDatabase.getDatabase(context).recipeDao())
     }
 }

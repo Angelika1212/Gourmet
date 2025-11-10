@@ -4,12 +4,12 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import iate.labs.gourmet.data.dao.ItemRecipeDao
-import iate.labs.gourmet.data.entity.ItemRecipe
+import iate.labs.gourmet.data.dao.RecipeDao
+import iate.labs.gourmet.data.entity.Recipe
 
-@Database(entities = [ItemRecipe::class], version = 1, exportSchema = false)
+@Database(entities = [Recipe::class], version = 1, exportSchema = false)
 abstract class RecipeDatabase: RoomDatabase() {
-    abstract fun itemDao(): ItemRecipeDao
+    abstract fun recipeDao(): RecipeDao
 
     companion object {
         @Volatile
@@ -17,7 +17,7 @@ abstract class RecipeDatabase: RoomDatabase() {
 
         fun getDatabase(context: Context): RecipeDatabase {
             return Instance ?: synchronized(this) {
-                Room.databaseBuilder(context, RecipeDatabase::class.java, "item_database")
+                Room.databaseBuilder(context, RecipeDatabase::class.java, "recipe_database")
                     .build()
                     .also { Instance = it }
             }
