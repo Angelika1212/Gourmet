@@ -6,13 +6,14 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import androidx.wear.compose.navigation.currentBackStackEntryAsState
 
 val bottomNavItems = listOf(
-    Screen.Recipe,
-    Screen.CreateRecipe,
-    Screen.Profile
+    RecipesDestination,
+    HomeDestination
 )
 
 @Composable
@@ -45,4 +46,10 @@ fun RecipeBottomNavBar(navController: NavController) {
             )
         }
     }
+}
+
+@Preview
+@Composable
+fun BottomNavBarPreview(){
+    RecipeBottomNavBar(navController = rememberNavController())
 }
