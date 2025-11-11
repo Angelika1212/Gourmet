@@ -7,7 +7,11 @@ import androidx.room.RoomDatabase
 import iate.labs.gourmet.data.dao.RecipeDao
 import iate.labs.gourmet.data.entity.Recipe
 
-@Database(entities = [Recipe::class], version = 1, exportSchema = false)
+@Database(
+    entities = [Recipe::class],
+    version = 1,
+    exportSchema = false)
+
 abstract class RecipeDatabase: RoomDatabase() {
     abstract fun recipeDao(): RecipeDao
 
@@ -18,6 +22,7 @@ abstract class RecipeDatabase: RoomDatabase() {
         fun getDatabase(context: Context): RecipeDatabase {
             return Instance ?: synchronized(this) {
                 Room.databaseBuilder(context, RecipeDatabase::class.java, "recipe_database")
+                    .fallbackToDestructiveMigration(false)
                     .build()
                     .also { Instance = it }
             }

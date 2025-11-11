@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">Gourmet</string>
+    <string name="back_button">Back</string>
+    <string name="recipe">Recipe</string>
+    <string name="description">Description</string>
+    <string name="process">Cooking</string>
+    <string name="delete">Delete</string>
+    <string name="attention">Attention</string>
+    <string name="delete_question">Are you sure you want to delete?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="cookingTime">Cooking Time (min)</string>
+    <string name="ingredient">Ingredients</string>
+    <string name="recipe_entry_title">Add Recipe</string>
+    <string name="recipe_name_req">Recipe name*</string>
+    <string name="recipe_cooking_time">Cooking time*</string>
+    <string name="recipe_description">Recipe description*</string>
+    <string name="recipe_ingredients">Recipe ingredients*</string>
+    <string name="recipe_process">Recipe process*</string>
+    <string name="edit_item_title">Edit Recipe</string>
+    <string name="save_action">Save</string>
+    <string name="no_recipe_description">Oops! Sorry, no recipe in RecipeBook</string>
 </resources>

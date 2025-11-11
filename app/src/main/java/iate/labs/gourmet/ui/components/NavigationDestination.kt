@@ -22,7 +22,7 @@ object RecipesDestination : NavigationDestination{
 }
 
 object EntryRecipeDestination : NavigationDestination{
-    override val route = "entryRecipe"
+    override val route = "recipe_entry"
     override val title = "Добавить рецепт"
     override val icon = Icons.Default.AddCircle
 }
@@ -34,16 +34,18 @@ object HomeDestination: NavigationDestination{
 }
 
 object EditRecipeDestination: NavigationDestination{
-    override val route = "editRecipe"
+    override val route = "recipe_edit"
     override val title = "Редактировать рецепт"
     override val icon = Icons.Default.Edit
+    const val itemIdArg = "recipeId"
+    val routeWithArgs = "$route/{$itemIdArg}"
 }
 
 object RecipeDetailsDestination: NavigationDestination {
-    override val route = "recipeDetails"
+    override val route = "recipe_details"
     override val title = "Подробнее о рецепте"
     override val icon = Icons.Default.Info
-    const val itemIdArg = "itemId"
+    const val itemIdArg = "recipeId"
     val routeWithArgs = "$route/{$itemIdArg}"
 }
 

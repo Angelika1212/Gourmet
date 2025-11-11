@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.Flow
 class RecipesRepository(private val recipeDao: RecipeDao) : RecipeRepository {
     override fun getAllRecipesStream(): Flow<List<Recipe>> = recipeDao.getAllRecipes()
 
-    override fun getRecipesStream(id: Int): Flow<Recipe?> = recipeDao.getRecipe(id)
+    override fun getRecipeStream(id: Int): Flow<Recipe?> = recipeDao.getRecipe(id)
 
     override suspend fun insertRecipe(recipe: Recipe) = recipeDao.insert(recipe)
 
