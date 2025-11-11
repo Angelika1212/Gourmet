@@ -129,7 +129,7 @@ fun RecipeEditButton(
     ) {
         Icon(
             imageVector = Icons.Default.Edit,
-            contentDescription = stringResource(R.string.edit_item_title),
+            contentDescription = stringResource(R.string.recipe_edit_title),
         )
     }
 }
@@ -156,7 +156,7 @@ private fun RecipeDetailsBody(
             shape = MaterialTheme.shapes.small,
             modifier = Modifier.fillMaxWidth()
         ) {
-            Text(stringResource(R.string.delete))
+            Text(stringResource(R.string.delete_action))
         }
         if (deleteConfirmationRequired) {
             DeleteConfirmationDialog(
@@ -205,7 +205,7 @@ fun RecipeDetails(
             ) {
                 Image(
                     imageVector = ImageVector.vectorResource(R.drawable.image_icon),
-                    contentDescription = "No image",
+                    contentDescription = stringResource(R.string.no_image_description),
                     modifier = Modifier.scale(1.5f),
                     contentScale = ContentScale.Crop
                 )
@@ -213,7 +213,7 @@ fun RecipeDetails(
             }
 
             RecipeDetailsRow(
-                labelResID = R.string.recipe,
+                labelResID = R.string.recipe_name,
                 recipeDetail = recipe.name,
                 modifier = Modifier.padding(
                     horizontal = dimensionResource(
@@ -225,7 +225,7 @@ fun RecipeDetails(
             HorizontalDivider(thickness = 2.dp, color = Color.White)
 
             RecipeDetailsRow(
-                labelResID = R.string.description,
+                labelResID = R.string.recipe_description,
                 recipeDetail = recipe.description,
                 modifier = Modifier.padding(
                     horizontal = dimensionResource(
@@ -237,7 +237,7 @@ fun RecipeDetails(
             HorizontalDivider(thickness = 2.dp, color = Color.White)
 
             RecipeDetailsRow(
-                labelResID = R.string.cookingTime,
+                labelResID = R.string.recipe_cookingTime,
                 recipeDetail = recipe.cookingTime.toString(),
                 modifier = Modifier.padding(
                     horizontal = dimensionResource(
@@ -249,7 +249,7 @@ fun RecipeDetails(
             HorizontalDivider(thickness = 2.dp, color = Color.White)
 
             RecipeDetailsRow(
-                labelResID = R.string.ingredient,
+                labelResID = R.string.recipe_ingredient,
                 recipeDetail = recipe.ingredients,
                 modifier = Modifier.padding(
                     horizontal = dimensionResource(
@@ -261,7 +261,7 @@ fun RecipeDetails(
             HorizontalDivider(thickness = 2.dp, color = Color.White)
 
             RecipeDetailsRow(
-                labelResID = R.string.process,
+                labelResID = R.string.recipe_process,
                 recipeDetail = recipe.recipeProcess,
                 modifier = Modifier.padding(
                     horizontal = dimensionResource(
@@ -327,7 +327,7 @@ fun LikeButton(
     ) {
         Icon (
             imageVector = if (isLiked) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
-            contentDescription = if (isLiked) "Добавить в избранное" else "Удалить из избранного",
+            contentDescription = if (isLiked) stringResource(R.string.like_recipe) else stringResource(R.string.dislike_recipe),
             tint = if (isLiked) Color.Red else Color.Black
         )
     }

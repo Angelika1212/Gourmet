@@ -46,7 +46,7 @@ fun RecipeEntryScreen(
     Scaffold (
         topBar = {
             RecipeTopBar(
-                title = "Создать рецепт",
+                title = stringResource(R.string.recipe_entry_title),
                 canNavigateBack = canNavigateBack,
                 navigateUp = onNavigateUp
             )
@@ -157,7 +157,7 @@ fun RecipeInputDescription(
     OutlinedTextField(
         value = recipeDetails.description,
         onValueChange = { onValueChange(recipeDetails.copy(description = it)) },
-        label = { Text(stringResource(R.string.recipe_description)) },
+        label = { Text(stringResource(R.string.recipe_description_req)) },
         colors = OutlinedTextFieldDefaults.colors(
             focusedContainerColor = MaterialTheme.colorScheme.secondaryContainer,
             unfocusedContainerColor = MaterialTheme.colorScheme.secondaryContainer,
@@ -179,7 +179,7 @@ fun RecipeInputIngredients(
     OutlinedTextField(
         value = recipeDetails.ingredients,
         onValueChange = { onValueChange(recipeDetails.copy(ingredients = it)) },
-        label = { Text(stringResource(R.string.recipe_ingredients)) },
+        label = { Text(stringResource(R.string.recipe_ingredients_req)) },
         colors = OutlinedTextFieldDefaults.colors(
             focusedContainerColor = MaterialTheme.colorScheme.secondaryContainer,
             unfocusedContainerColor = MaterialTheme.colorScheme.secondaryContainer,
@@ -201,7 +201,7 @@ fun RecipeInputProcess(
     OutlinedTextField(
         value = recipeDetails.recipeProcess,
         onValueChange = { onValueChange(recipeDetails.copy(recipeProcess = it)) },
-        label = { Text(stringResource(R.string.recipe_process)) },
+        label = { Text(stringResource(R.string.recipe_process_req)) },
         colors = OutlinedTextFieldDefaults.colors(
             focusedContainerColor = MaterialTheme.colorScheme.secondaryContainer,
             unfocusedContainerColor = MaterialTheme.colorScheme.secondaryContainer,
@@ -224,7 +224,7 @@ fun RecipeInputCookingTime(
         value = recipeDetails.cookingTime,
         onValueChange = { onValueChange(recipeDetails.copy(cookingTime = it)) },
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-        label = { Text(stringResource(R.string.recipe_cooking_time)) },
+        label = { Text(stringResource(R.string.recipe_cooking_time_req)) },
         colors = OutlinedTextFieldDefaults.colors(
             focusedContainerColor = MaterialTheme.colorScheme.secondaryContainer,
             unfocusedContainerColor = MaterialTheme.colorScheme.secondaryContainer,

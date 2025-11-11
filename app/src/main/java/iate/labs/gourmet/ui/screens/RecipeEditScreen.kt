@@ -10,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalLayoutDirection
+import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
 import iate.labs.gourmet.model.RecipeEditViewModel
 import iate.labs.gourmet.ui.AppViewModelProvider
@@ -29,7 +30,7 @@ fun RecipeEditScreen (
     Scaffold(
         topBar = {
             RecipeTopBar(
-                title = EditRecipeDestination.title,
+                title = stringResource( EditRecipeDestination.title),
                 canNavigateBack = true,
                 navigateUp = onNavigateUp
             )

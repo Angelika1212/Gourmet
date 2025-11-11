@@ -58,7 +58,7 @@ fun HomeScreen(
         modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
             RecipeTopBar(
-                title = HomeDestination.title,
+                title = stringResource(HomeDestination.title),
                 canNavigateBack = false
             )
         },
@@ -102,7 +102,7 @@ private fun HomeBody(
     ) {
         if (recipeList.isEmpty()) {
             Text(
-                text = stringResource(R.string.no_recipe_description),
+                text = stringResource(R.string.no_favorite_recipe),
                 textAlign = TextAlign.Center,
                 style = MaterialTheme.typography.titleLarge,
                 modifier = Modifier.padding(contentPadding),

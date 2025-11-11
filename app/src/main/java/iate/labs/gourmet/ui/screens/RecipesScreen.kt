@@ -36,6 +36,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.layout.ContentScale
@@ -72,7 +73,7 @@ fun RecipesScreen(
 
     Scaffold(
         modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
-        topBar = { RecipeTopBar( title = "Рецепты") },
+        topBar = { RecipeTopBar( title = stringResource(R.string.recipe_all_list_title)) },
         floatingActionButton = { RecipeEntryAction(navigateToRecipeEntry)}
     ) {
         innerPadding ->
@@ -115,7 +116,7 @@ fun RecipeBody(
     ) {
         if (recipeList.isEmpty()) {
             Text(
-                text = stringResource(R.string.no_recipe_description),
+                text = stringResource(R.string.no_recipe_list),
                 textAlign = TextAlign.Center,
                 style = MaterialTheme.typography.titleLarge,
                 modifier = Modifier.padding(contentPadding),
@@ -190,7 +191,7 @@ fun RecipeImage(
     if (recipe == null) {
         Image(
             imageVector = ImageVector.vectorResource(R.drawable.image_icon),
-            contentDescription = "No image",
+            contentDescription = stringResource(R.string.no_image_description),
             modifier = Modifier.scale(1.5f),
             contentScale = ContentScale.Crop
         )
@@ -227,7 +228,7 @@ fun RecipeCookingTime(
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
-            text = "Время приготовления:",
+            text = stringResource(R.string.recipe_cookingTime),
             style = MaterialTheme.typography.titleMedium
         )
         Spacer(Modifier.weight(1f))
@@ -266,7 +267,8 @@ fun LikedButton(
     IconButton(onClick = onClick) {
         Icon(
             imageVector = imageVector,
-            contentDescription = "IsLiked"
+            contentDescription = "IsLiked",
+            tint = if (isLiked) Color.Red else Color.Black
         )
     }
 
@@ -294,7 +296,7 @@ fun RecipeBodyPreview() {
                     description = "Любимый лимонный кекс",
                     ingredients = "Лимон, мука, яйца, соль, сахар",
                     recipeProcess = "Cook",
-                    isLiked = false
+                    isLiked = true
                 )
             ),
             onRecipeClick = {},

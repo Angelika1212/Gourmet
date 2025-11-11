@@ -6,6 +6,7 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
@@ -39,10 +40,10 @@ fun RecipeBottomNavBar(navController: NavController) {
                 },
                 icon = {
                     screen.icon?.let {
-                        Icon(it, contentDescription = screen.title, tint = Color.White)
+                        Icon(it, contentDescription = stringResource(screen.title), tint = Color.White)
                     }
                 },
-                label = { screen.title?.let { Text(it, color = Color.White) } }
+                label = { stringResource(screen.title)?.let { Text(it, color = Color.White) } }
             )
         }
     }

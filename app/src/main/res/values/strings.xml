@@ -1,23 +1,39 @@
 <resources>
     <string name="app_name">Gourmet</string>
+
     <string name="back_button">Back</string>
+    <string name="save_action">Save</string>
+    <string name="delete_action">Delete</string>
+    <string name="no_image_description">No image</string>
+
+    <string name="recipe_edit_title">Edit Recipe</string>
+    <string name="recipe_entry_title">Add Recipe</string>
+    <string name="recipe_detail_title">Recipe Details</string>
+    <string name="recipe_all_list_title">All recipes</string>
+    <string name="recipe_favorite_list_title">Favorite recipe</string>
+
     <string name="recipe">Recipe</string>
-    <string name="description">Description</string>
-    <string name="process">Cooking</string>
-    <string name="delete">Delete</string>
+    <string name="recipe_name">Recipe:</string>
+    <string name="recipe_description">Description:</string>
+    <string name="recipe_process">Cooking:</string>
+    <string name="recipe_cookingTime">Cooking Time (min):</string>
+    <string name="recipe_ingredient">Ingredients:</string>
+
     <string name="attention">Attention</string>
     <string name="delete_question">Are you sure you want to delete?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
-    <string name="cookingTime">Cooking Time (min)</string>
-    <string name="ingredient">Ingredients</string>
-    <string name="recipe_entry_title">Add Recipe</string>
+
+    <string name="like_recipe">Like</string>
+    <string name="dislike_recipe">Dislike</string>
+    
     <string name="recipe_name_req">Recipe name*</string>
-    <string name="recipe_cooking_time">Cooking time*</string>
-    <string name="recipe_description">Recipe description*</string>
-    <string name="recipe_ingredients">Recipe ingredients*</string>
-    <string name="recipe_process">Recipe process*</string>
-    <string name="edit_item_title">Edit Recipe</string>
-    <string name="save_action">Save</string>
-    <string name="no_recipe_description">Oops! Sorry, no recipe in RecipeBook</string>
+    <string name="recipe_cooking_time_req">Cooking time (min)*</string>
+    <string name="recipe_description_req">Recipe description*</string>
+    <string name="recipe_ingredients_req">Recipe ingredients*</string>
+    <string name="recipe_process_req">Recipe process*</string>
+    <string name="required_fields">*required fields</string>
+
+    <string name="no_recipe_list">Oops! Sorry, no recipe in RecipeBook</string>
+    <string name="no_favorite_recipe">No favorite recipes</string>
 </resources>

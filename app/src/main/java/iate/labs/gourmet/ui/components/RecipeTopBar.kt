@@ -36,7 +36,7 @@ fun RecipeTopBar(
                     Icon(
                         imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                         contentDescription = stringResource(string.back_button),
-                        tint = Color.Black
+                        tint = Color.White
                     )
                 }
             }
