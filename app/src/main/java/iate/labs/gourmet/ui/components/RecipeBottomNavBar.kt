@@ -11,6 +11,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import androidx.wear.compose.navigation.currentBackStackEntryAsState
+import iate.labs.gourmet.data.utils.localizedStringResource
 
 val bottomNavItems = listOf(
     RecipesDestination,
@@ -40,10 +41,10 @@ fun RecipeBottomNavBar(navController: NavController) {
                 },
                 icon = {
                     screen.icon?.let {
-                        Icon(it, contentDescription = stringResource(screen.title), tint = Color.White)
+                        Icon(it, contentDescription = localizedStringResource(screen.title), tint = Color.White)
                     }
                 },
-                label = { stringResource(screen.title)?.let { Text(it, color = Color.White) } }
+                label = { localizedStringResource(screen.title)?.let { Text(it, color = Color.White) } }
             )
         }
     }

@@ -32,6 +32,7 @@ import iate.labs.gourmet.model.RecipeUiState
 import iate.labs.gourmet.ui.AppViewModelProvider
 import iate.labs.gourmet.ui.components.RecipeTopBar
 import iate.labs.gourmet.R
+import iate.labs.gourmet.data.utils.localizedStringResource
 import iate.labs.gourmet.ui.theme.GourmetTheme
 import kotlinx.coroutines.launch
 
@@ -46,7 +47,7 @@ fun RecipeEntryScreen(
     Scaffold (
         topBar = {
             RecipeTopBar(
-                title = stringResource(R.string.recipe_entry_title),
+                title = localizedStringResource(R.string.recipe_entry_title),
                 canNavigateBack = canNavigateBack,
                 navigateUp = onNavigateUp
             )
@@ -99,7 +100,7 @@ fun RecipeEntryBody(
                 disabledContentColor = Color.Gray,
                 disabledContainerColor = Color.LightGray)
         ) {
-            Text(text = stringResource(R.string.save_action))
+            Text(text = localizedStringResource(R.string.save_action))
         }
 
     }
@@ -135,7 +136,7 @@ fun RecipeInputName(
     OutlinedTextField(
         value = recipeDetails.name,
         onValueChange = { onValueChange(recipeDetails.copy(name = it)) },
-        label = { Text(stringResource(R.string.recipe_name_req)) },
+        label = { Text(localizedStringResource(R.string.recipe_name_req)) },
         colors = OutlinedTextFieldDefaults.colors(
             focusedContainerColor = MaterialTheme.colorScheme.secondaryContainer,
             unfocusedContainerColor = MaterialTheme.colorScheme.secondaryContainer,
@@ -157,7 +158,7 @@ fun RecipeInputDescription(
     OutlinedTextField(
         value = recipeDetails.description,
         onValueChange = { onValueChange(recipeDetails.copy(description = it)) },
-        label = { Text(stringResource(R.string.recipe_description_req)) },
+        label = { Text(localizedStringResource(R.string.recipe_description_req)) },
         colors = OutlinedTextFieldDefaults.colors(
             focusedContainerColor = MaterialTheme.colorScheme.secondaryContainer,
             unfocusedContainerColor = MaterialTheme.colorScheme.secondaryContainer,
@@ -179,7 +180,7 @@ fun RecipeInputIngredients(
     OutlinedTextField(
         value = recipeDetails.ingredients,
         onValueChange = { onValueChange(recipeDetails.copy(ingredients = it)) },
-        label = { Text(stringResource(R.string.recipe_ingredients_req)) },
+        label = { Text(localizedStringResource(R.string.recipe_ingredients_req)) },
         colors = OutlinedTextFieldDefaults.colors(
             focusedContainerColor = MaterialTheme.colorScheme.secondaryContainer,
             unfocusedContainerColor = MaterialTheme.colorScheme.secondaryContainer,
@@ -201,7 +202,7 @@ fun RecipeInputProcess(
     OutlinedTextField(
         value = recipeDetails.recipeProcess,
         onValueChange = { onValueChange(recipeDetails.copy(recipeProcess = it)) },
-        label = { Text(stringResource(R.string.recipe_process_req)) },
+        label = { Text(localizedStringResource(R.string.recipe_process_req)) },
         colors = OutlinedTextFieldDefaults.colors(
             focusedContainerColor = MaterialTheme.colorScheme.secondaryContainer,
             unfocusedContainerColor = MaterialTheme.colorScheme.secondaryContainer,
@@ -224,7 +225,7 @@ fun RecipeInputCookingTime(
         value = recipeDetails.cookingTime,
         onValueChange = { onValueChange(recipeDetails.copy(cookingTime = it)) },
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-        label = { Text(stringResource(R.string.recipe_cooking_time_req)) },
+        label = { Text(localizedStringResource(R.string.recipe_cooking_time_req)) },
         colors = OutlinedTextFieldDefaults.colors(
             focusedContainerColor = MaterialTheme.colorScheme.secondaryContainer,
             unfocusedContainerColor = MaterialTheme.colorScheme.secondaryContainer,

@@ -57,6 +57,7 @@ import iate.labs.gourmet.ui.AppViewModelProvider
 import iate.labs.gourmet.ui.components.RecipeTopBar
 import iate.labs.gourmet.R
 import iate.labs.gourmet.data.entity.Recipe
+import iate.labs.gourmet.data.utils.localizedStringResource
 import iate.labs.gourmet.model.RecipeDetails
 import iate.labs.gourmet.model.RecipeDetailsUiState
 import iate.labs.gourmet.model.toRecipe
@@ -129,7 +130,7 @@ fun RecipeEditButton(
     ) {
         Icon(
             imageVector = Icons.Default.Edit,
-            contentDescription = stringResource(R.string.recipe_edit_title),
+            contentDescription = localizedStringResource(R.string.recipe_edit_title),
         )
     }
 }
@@ -156,7 +157,7 @@ private fun RecipeDetailsBody(
             shape = MaterialTheme.shapes.small,
             modifier = Modifier.fillMaxWidth()
         ) {
-            Text(stringResource(R.string.delete_action))
+            Text(localizedStringResource(R.string.delete_action))
         }
         if (deleteConfirmationRequired) {
             DeleteConfirmationDialog(
@@ -205,7 +206,7 @@ fun RecipeDetails(
             ) {
                 Image(
                     imageVector = ImageVector.vectorResource(R.drawable.image_icon),
-                    contentDescription = stringResource(R.string.no_image_description),
+                    contentDescription = localizedStringResource(R.string.no_image_description),
                     modifier = Modifier.scale(1.5f),
                     contentScale = ContentScale.Crop
                 )
@@ -280,7 +281,7 @@ fun RecipeDetailsRow(
     modifier: Modifier = Modifier
 ){
     Row(modifier = modifier) {
-        Text(text = stringResource(labelResID), fontWeight = FontWeight.Bold)
+        Text(text = localizedStringResource(labelResID), fontWeight = FontWeight.Bold)
         Spacer(modifier = Modifier.weight(1f))
 
     }
@@ -297,17 +298,17 @@ private fun DeleteConfirmationDialog(
     modifier: Modifier = Modifier
 ) {
     AlertDialog(onDismissRequest = { },
-        title = { Text(stringResource(R.string.attention)) },
-        text = { Text(stringResource(R.string.delete_question)) },
+        title = { Text(localizedStringResource(R.string.attention)) },
+        text = { Text(localizedStringResource(R.string.delete_question)) },
         modifier = modifier,
         dismissButton = {
             TextButton(onClick = onDeleteCancel) {
-                Text(text = stringResource(R.string.no))
+                Text(text = localizedStringResource(R.string.no))
             }
         },
         confirmButton = {
             TextButton(onClick = onDeleteConfirm) {
-                Text(text = stringResource(R.string.yes))
+                Text(text = localizedStringResource(R.string.yes))
             }
         })
 }
@@ -327,7 +328,7 @@ fun LikeButton(
     ) {
         Icon (
             imageVector = if (isLiked) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
-            contentDescription = if (isLiked) stringResource(R.string.like_recipe) else stringResource(R.string.dislike_recipe),
+            contentDescription = if (isLiked) localizedStringResource(R.string.like_recipe) else localizedStringResource(R.string.dislike_recipe),
             tint = if (isLiked) Color.Red else Color.Black
         )
     }

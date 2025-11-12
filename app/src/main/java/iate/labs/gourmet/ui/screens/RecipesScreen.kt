@@ -52,6 +52,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import iate.labs.gourmet.R
 import iate.labs.gourmet.data.entity.Recipe
+import iate.labs.gourmet.data.utils.localizedStringResource
 import iate.labs.gourmet.model.RecipesViewModel
 import iate.labs.gourmet.ui.AppViewModelProvider
 import iate.labs.gourmet.ui.components.RecipeTopBar
@@ -73,7 +74,7 @@ fun RecipesScreen(
 
     Scaffold(
         modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
-        topBar = { RecipeTopBar( title = stringResource(R.string.recipe_all_list_title)) },
+        topBar = { RecipeTopBar( title = localizedStringResource(R.string.recipe_all_list_title)) },
         floatingActionButton = { RecipeEntryAction(navigateToRecipeEntry)}
     ) {
         innerPadding ->
@@ -99,7 +100,7 @@ fun RecipeEntryAction(navigateToRecipeEntry: () -> Unit) {
     ) {
         Icon(
             imageVector = Icons.Default.Add,
-            contentDescription = stringResource(R.string.recipe_entry_title))
+            contentDescription = localizedStringResource(R.string.recipe_entry_title))
     }
 }
 
@@ -116,7 +117,7 @@ fun RecipeBody(
     ) {
         if (recipeList.isEmpty()) {
             Text(
-                text = stringResource(R.string.no_recipe_list),
+                text = localizedStringResource(R.string.no_recipe_list),
                 textAlign = TextAlign.Center,
                 style = MaterialTheme.typography.titleLarge,
                 modifier = Modifier.padding(contentPadding),
@@ -191,7 +192,7 @@ fun RecipeImage(
     if (recipe == null) {
         Image(
             imageVector = ImageVector.vectorResource(R.drawable.image_icon),
-            contentDescription = stringResource(R.string.no_image_description),
+            contentDescription = localizedStringResource(R.string.no_image_description),
             modifier = Modifier.scale(1.5f),
             contentScale = ContentScale.Crop
         )
@@ -228,7 +229,7 @@ fun RecipeCookingTime(
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
-            text = stringResource(R.string.recipe_cookingTime),
+            text = localizedStringResource(R.string.recipe_cookingTime),
             style = MaterialTheme.typography.titleMedium
         )
         Spacer(Modifier.weight(1f))

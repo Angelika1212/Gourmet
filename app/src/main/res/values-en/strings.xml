@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Gourmet</string>
 
@@ -29,7 +30,7 @@
 
     <string name="like_recipe">Like</string>
     <string name="dislike_recipe">Dislike</string>
-    
+
     <string name="recipe_name_req">Recipe name*</string>
     <string name="recipe_cooking_time_req">Cooking time (min)*</string>
     <string name="recipe_description_req">Recipe description*</string>
