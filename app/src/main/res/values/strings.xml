@@ -17,6 +17,7 @@
 
     <string name="recipe">Recipe</string>
     <string name="recipe_name">Recipe:</string>
+    <string name="recipe_category">Category:</string>
     <string name="recipe_description">Description:</string>
     <string name="recipe_process">Cooking:</string>
     <string name="recipe_cookingTime">Cooking Time (min):</string>
@@ -31,6 +32,7 @@
     <string name="dislike_recipe">Dislike</string>
     
     <string name="recipe_name_req">Recipe name*</string>
+    <string name="recipe_category_req">Recipe category*</string>
     <string name="recipe_cooking_time_req">Cooking time (min)*</string>
     <string name="recipe_description_req">Recipe description*</string>
     <string name="recipe_ingredients_req">Recipe ingredients*</string>

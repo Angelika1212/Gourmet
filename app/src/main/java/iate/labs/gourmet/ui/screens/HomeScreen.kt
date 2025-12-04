@@ -172,6 +172,7 @@ fun HomePreviewScreen(){
                     cookingTime = 30,
                     description = "Шоколадный торт",
                     ingredients = "Коньяк, какао, яйца, сгущенка ...0",
+                    category = "Десерт",
                     recipeProcess = "Cook",
                     isLiked = true
                 ),
@@ -182,6 +183,7 @@ fun HomePreviewScreen(){
                     description = "Любимый лимонный кекс",
                     ingredients = "Лимон, мука, яйца, соль, сахар",
                     recipeProcess = "Cook",
+                    category = "Десерт",
                     isLiked = true
                 )
             ),

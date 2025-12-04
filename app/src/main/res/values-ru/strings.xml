@@ -18,6 +18,7 @@
 
     <string name="recipe">Рецепт</string>
     <string name="recipe_name">Название рецепта:</string>
+    <string name="recipe_category">Категория:</string>
     <string name="recipe_description">Описание:</string>
     <string name="recipe_process">Процесс приготовления:</string>
     <string name="recipe_cookingTime">Время приготовления (мин):</string>
@@ -32,6 +33,7 @@
     <string name="dislike_recipe">Не нравится</string>
 
     <string name="recipe_name_req">Наименование рецепта*</string>
+    <string name="recipe_category_req">Категория блюда*</string>
     <string name="recipe_cooking_time_req">Время приготовления (мин)*</string>
     <string name="recipe_description_req">Описание рецепта*</string>
     <string name="recipe_ingredients_req">Ингредиенты*</string>

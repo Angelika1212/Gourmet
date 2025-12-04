@@ -226,6 +226,18 @@ fun RecipeDetails(
             HorizontalDivider(thickness = 2.dp, color = Color.White)
 
             RecipeDetailsRow(
+                labelResID = R.string.recipe_category,
+                recipeDetail = recipe.category,
+                modifier = Modifier.padding(
+                    horizontal = dimensionResource(
+                        id = R.dimen.padding_medium
+                    )
+                )
+            )
+
+            HorizontalDivider(thickness = 2.dp, color = Color.White)
+
+            RecipeDetailsRow(
                 labelResID = R.string.recipe_description,
                 recipeDetail = recipe.description,
                 modifier = Modifier.padding(
@@ -347,6 +359,7 @@ fun PreviewRecipeDetailScreen(){
                     ingredients = "Яйца, мука, сахар, разрыхлитель, молоко, коньяк....",
                     cookingTime = "20",
                     description = "Вкусный шоколадный торт с коньяком",
+                    category = "Десерт",
                     recipeProcess = "Смешать яйца с сахаром до мягких пиков, добавить муку и какао...",
                     isLiked = true
                     )

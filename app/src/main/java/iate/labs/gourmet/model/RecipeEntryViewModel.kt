@@ -21,7 +21,7 @@ class RecipeEntryViewModel(
     private fun validateInput(uiState: RecipeDetails = recipeUiState.recipeDetails): Boolean {
         return with(uiState) {
             name.isNotBlank() && cookingTime.toIntOrNull()!! > 0 &&
-                    ingredients.isNotBlank() &&
+                    ingredients.isNotBlank() && category.isNotBlank() &&
                     description.isNotBlank() && recipeProcess.isNotBlank()
         }
     }
@@ -43,6 +43,7 @@ data class RecipeDetails(
     val name: String = "",
     val cookingTime: String = "",
     val description: String = "",
+    val category: String = "",
     val ingredients: String = "",
     val recipeProcess: String = "",
     val isLiked: Boolean = false
@@ -54,6 +55,7 @@ fun RecipeDetails.toRecipe(): Recipe = Recipe(
     cookingTime = cookingTime.toIntOrNull() ?: 0,
     ingredients = ingredients,
     description = description,
+    category = category,
     recipeProcess = recipeProcess,
     isLiked = isLiked
 )
@@ -69,6 +71,7 @@ fun Recipe.toRecipeDetails(): RecipeDetails = RecipeDetails(
     cookingTime = cookingTime.toString(),
     ingredients = ingredients,
     description = description,
+    category = category,
     recipeProcess = recipeProcess,
     isLiked = isLiked
 )

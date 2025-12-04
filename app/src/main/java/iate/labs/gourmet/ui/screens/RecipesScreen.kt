@@ -235,7 +235,7 @@ fun RecipeCookingTime(
         Spacer(Modifier.weight(1f))
 
         Text(
-            text = "${recipe.cookingTime} мин",
+            text = "${recipe.cookingTime} min",
             style = MaterialTheme.typography.titleMedium
         )
     }
@@ -262,7 +262,6 @@ fun LikedButton(
     modifier: Modifier = Modifier,
     onClick: () -> Unit = {}
 ){
-    //переделать кнопку на обычную иконку
     val imageVector = if (isLiked) Icons.Default.Favorite else Icons.Default.FavoriteBorder
 
     IconButton(onClick = onClick) {
@@ -287,6 +286,7 @@ fun RecipeBodyPreview() {
                     cookingTime = 30,
                     description = "Шоколадный торт",
                     ingredients = "Коньяк, какао, яйца, сгущенка ...0",
+                    category = "Десерт",
                     recipeProcess = "Cook",
                     isLiked = false
                 ),
@@ -295,6 +295,7 @@ fun RecipeBodyPreview() {
                     name = "ЛИМОННЫЙ КЕКС",
                     cookingTime = 10,
                     description = "Любимый лимонный кекс",
+                    category = "Десерт",
                     ingredients = "Лимон, мука, яйца, соль, сахар",
                     recipeProcess = "Cook",
                     isLiked = true
