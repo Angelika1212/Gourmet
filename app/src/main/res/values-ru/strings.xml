@@ -17,6 +17,7 @@
     <string name="recipe_favorite_list_title">Любимые рецепты</string>
 
     <string name="recipe">Рецепт</string>
+    <string name="recipe_search">Найти рецепт</string>
     <string name="recipe_name">Название рецепта:</string>
     <string name="recipe_category">Категория:</string>
     <string name="recipe_description">Описание:</string>

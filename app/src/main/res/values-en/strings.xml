@@ -17,6 +17,7 @@
     <string name="recipe_favorite_list_title">Favorite recipe</string>
 
     <string name="recipe">Recipe</string>
+    <string name="recipe_search">Search recipe</string>
     <string name="recipe_name">Recipe:</string>
     <string name="recipe_category">Category:</string>
     <string name="recipe_description">Description:</string>

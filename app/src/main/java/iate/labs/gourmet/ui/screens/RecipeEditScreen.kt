@@ -33,6 +33,8 @@ fun RecipeEditScreen (
             RecipeTopBar(
                 title = localizedStringResource( EditRecipeDestination.title),
                 canNavigateBack = true,
+                canUseSearch = false,
+                onSearchValueChange = {},
                 navigateUp = onNavigateUp
             )
         },

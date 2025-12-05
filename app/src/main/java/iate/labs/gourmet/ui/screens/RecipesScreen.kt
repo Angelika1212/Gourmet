@@ -20,6 +20,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -27,6 +28,8 @@ import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
@@ -70,19 +73,31 @@ fun RecipesScreen(
     viewModel: RecipesViewModel = viewModel(factory = AppViewModelProvider.Factory)
 ) {
     val homeUiState by viewModel.recipeUiState.collectAsState()
+    val searchByName by viewModel.searchByName.collectAsState()
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
+
+    val searchRecipes = if (searchByName.isBlank()) {
+        homeUiState.recipeList
+    } else {
+        homeUiState.recipeList.filter { recipe -> recipe.name.contains(searchByName, ignoreCase = true) }
+    }
 
     Scaffold(
         modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
-        topBar = { RecipeTopBar( title = localizedStringResource(R.string.recipe_all_list_title)) },
+        topBar = {
+            RecipeTopBar(
+                title = localizedStringResource(R.string.recipe_all_list_title),
+                searchValue = searchByName,
+                canUseSearch = true,
+                canNavigateBack = false,
+                onSearchValueChange = viewModel::onSearchValueChanged) },
         floatingActionButton = { RecipeEntryAction(navigateToRecipeEntry)}
     ) {
-        innerPadding ->
-        RecipeBody(
-            recipeList = homeUiState.recipeList,
-            onRecipeClick = navigateToRecipeUpdate,
-            modifier = modifier.fillMaxSize(),
-            contentPadding = innerPadding,
+        innerPadding -> RecipeBody(
+        recipeList = searchRecipes,
+        onRecipeClick = navigateToRecipeUpdate,
+        modifier = modifier.fillMaxSize().padding(top = 10.dp),
+        contentPadding = innerPadding
         )
     }
 }
@@ -127,7 +142,7 @@ fun RecipeBody(
                 recipeList = recipeList,
                 onItemClick = { onRecipeClick(it.id) },
                 contentPadding = contentPadding,
-                modifier = Modifier.padding(horizontal = dimensionResource(id = R.dimen.padding_small))
+                modifier = Modifier.padding(all = dimensionResource(id = R.dimen.padding_small))
             )
         }
 
@@ -302,7 +317,7 @@ fun RecipeBodyPreview() {
                 )
             ),
             onRecipeClick = {},
-            modifier = Modifier
+            modifier = Modifier.fillMaxWidth().padding(all = 5.dp)
         )
     }
 }

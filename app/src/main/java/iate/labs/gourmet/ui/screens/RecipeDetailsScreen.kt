@@ -79,6 +79,8 @@ fun RecipeDetailsScreen(
             RecipeTopBar(
                 title = uiState.value.recipeDetails.name,
                 canNavigateBack = true,
+                canUseSearch = false,
+                onSearchValueChange = {},
                 navigateUp = navigateBack
             )
         },

@@ -49,7 +49,9 @@ fun RecipeEntryScreen(
             RecipeTopBar(
                 title = localizedStringResource(R.string.recipe_entry_title),
                 canNavigateBack = canNavigateBack,
-                navigateUp = onNavigateUp
+                canUseSearch = false,
+                navigateUp = onNavigateUp,
+                onSearchValueChange = {}
             )
         }
     ) { innerPadding -> RecipeEntryBody(

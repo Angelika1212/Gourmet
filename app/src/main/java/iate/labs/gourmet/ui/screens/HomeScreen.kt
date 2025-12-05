@@ -75,7 +75,9 @@ fun HomeScreen(
         topBar = {
             RecipeTopBar(
                 title = localizedStringResource(HomeDestination.title),
-                canNavigateBack = false
+                canNavigateBack = false,
+                canUseSearch = false,
+                onSearchValueChange = {}
             )
         },
 
