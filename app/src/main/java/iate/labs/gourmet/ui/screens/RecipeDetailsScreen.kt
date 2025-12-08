@@ -20,6 +20,8 @@ import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.ButtonColors
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.FloatingActionButton
@@ -28,6 +30,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -124,6 +127,7 @@ fun RecipeEditButton(
     FloatingActionButton(
         onClick = { navigateToEditRecipe(id) },
         shape = MaterialTheme.shapes.medium,
+        containerColor = MaterialTheme.colorScheme.onSecondary,
         modifier = Modifier
             .padding(
                 end = WindowInsets.safeDrawing.asPaddingValues()
@@ -132,6 +136,7 @@ fun RecipeEditButton(
     ) {
         Icon(
             imageVector = Icons.Default.Edit,
+            tint = Color.White,
             contentDescription = localizedStringResource(R.string.recipe_edit_title),
         )
     }
@@ -157,7 +162,11 @@ private fun RecipeDetailsBody(
         OutlinedButton(
             onClick = { deleteConfirmationRequired = true },
             shape = MaterialTheme.shapes.small,
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = MaterialTheme.colorScheme.outlineVariant,
+                contentColor = MaterialTheme.colorScheme.onBackground
+            )
         ) {
             Text(localizedStringResource(R.string.delete_action))
         }
@@ -182,8 +191,8 @@ fun RecipeDetails(
 ){
     Card(
         modifier = modifier, colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.primaryContainer,
-            contentColor = MaterialTheme.colorScheme.onPrimaryContainer
+            containerColor = MaterialTheme.colorScheme.secondary,
+            contentColor = MaterialTheme.colorScheme.tertiary
         )
     ) {
         Column(
@@ -301,7 +310,7 @@ fun RecipeDetailsRow(
     }
 
     Row (modifier = modifier) {
-        Text(text = recipeDetail, fontWeight = FontWeight.Light)
+        Text(text = recipeDetail, fontWeight = FontWeight.Light, color = Color.Black)
     }
 }
 

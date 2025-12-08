@@ -30,6 +30,8 @@
     <string name="yes">Да</string>
     <string name="no">Нет</string>
 
+    <string name="minute">мин</string>
+
     <string name="like_recipe">Нравится</string>
     <string name="dislike_recipe">Не нравится</string>
 

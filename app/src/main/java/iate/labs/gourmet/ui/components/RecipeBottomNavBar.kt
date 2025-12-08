@@ -2,6 +2,7 @@ package iate.labs.gourmet.ui.components
 
 import androidx.compose.material3.Icon
 import androidx.compose.material3.BottomAppBar
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -24,7 +25,7 @@ fun RecipeBottomNavBar(navController: NavController) {
     val currentRoute = navBackStackEntry.value?.destination?.route
 
     BottomAppBar(
-        containerColor = Color.Red
+        containerColor = MaterialTheme.colorScheme.primary
     ) {
         bottomNavItems.forEach { screen ->
             NavigationBarItem(

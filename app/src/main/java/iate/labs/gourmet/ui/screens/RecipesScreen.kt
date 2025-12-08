@@ -107,6 +107,7 @@ fun RecipeEntryAction(navigateToRecipeEntry: () -> Unit) {
     FloatingActionButton(
         onClick = navigateToRecipeEntry,
         shape = MaterialTheme.shapes.medium,
+        containerColor = MaterialTheme.colorScheme.onSecondary,
         modifier = Modifier
             .padding(
                 end = WindowInsets.safeDrawing.asPaddingValues()
@@ -115,6 +116,7 @@ fun RecipeEntryAction(navigateToRecipeEntry: () -> Unit) {
     ) {
         Icon(
             imageVector = Icons.Default.Add,
+            tint = Color.White,
             contentDescription = localizedStringResource(R.string.recipe_entry_title))
     }
 }
@@ -227,7 +229,8 @@ fun RecipeHeader(
         Text(
             text = recipe.name,
             style = MaterialTheme.typography.headlineSmall,
-            fontWeight = FontWeight.Bold
+            fontWeight = FontWeight.Bold,
+            color = Color.Black
         )
         Spacer(Modifier.weight(1f))
 
@@ -245,13 +248,15 @@ fun RecipeCookingTime(
     ) {
         Text(
             text = localizedStringResource(R.string.recipe_cookingTime),
-            style = MaterialTheme.typography.titleMedium
+            style = MaterialTheme.typography.titleMedium,
+            color = Color.Black
         )
         Spacer(Modifier.weight(1f))
 
         Text(
-            text = "${recipe.cookingTime} min",
-            style = MaterialTheme.typography.titleMedium
+            text = "${recipe.cookingTime}" + localizedStringResource(R.string.minute),
+            style = MaterialTheme.typography.titleMedium,
+            color = Color.Black
         )
     }
 }
@@ -266,7 +271,8 @@ fun RecipeDescription(
     ) {
         Text(
             text = recipe.description,
-            style = MaterialTheme.typography.bodyMedium
+            style = MaterialTheme.typography.bodyMedium,
+            color = Color.Black
         )
     }
 }

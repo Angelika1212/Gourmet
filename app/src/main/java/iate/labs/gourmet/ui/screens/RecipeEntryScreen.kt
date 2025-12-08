@@ -99,7 +99,7 @@ fun RecipeEntryBody(
             colors = ButtonColors(
                 containerColor = Color.Green,
                 contentColor = Color.White,
-                disabledContentColor = Color.Gray,
+                disabledContentColor = Color.Black,
                 disabledContainerColor = Color.LightGray)
         ) {
             Text(text = localizedStringResource(R.string.save_action))
@@ -141,8 +141,8 @@ fun RecipeInputName(
         onValueChange = { onValueChange(recipeDetails.copy(name = it)) },
         label = { Text(localizedStringResource(R.string.recipe_name_req)) },
         colors = OutlinedTextFieldDefaults.colors(
-            focusedContainerColor = MaterialTheme.colorScheme.secondaryContainer,
-            unfocusedContainerColor = MaterialTheme.colorScheme.secondaryContainer,
+            focusedContainerColor = MaterialTheme.colorScheme.secondary,
+            unfocusedContainerColor = MaterialTheme.colorScheme.onPrimary,
             disabledContainerColor = MaterialTheme.colorScheme.secondaryContainer,
         ),
         modifier = Modifier.fillMaxWidth(),
@@ -163,8 +163,8 @@ fun RecipeInputDescription(
         onValueChange = { onValueChange(recipeDetails.copy(description = it)) },
         label = { Text(localizedStringResource(R.string.recipe_description_req)) },
         colors = OutlinedTextFieldDefaults.colors(
-            focusedContainerColor = MaterialTheme.colorScheme.secondaryContainer,
-            unfocusedContainerColor = MaterialTheme.colorScheme.secondaryContainer,
+            focusedContainerColor = MaterialTheme.colorScheme.secondary,
+            unfocusedContainerColor = MaterialTheme.colorScheme.onPrimary,
             disabledContainerColor = MaterialTheme.colorScheme.secondaryContainer,
         ),
         modifier = Modifier.fillMaxWidth(),
@@ -185,8 +185,8 @@ fun RecipeInputCategory(
         onValueChange = { onValueChange(recipeDetails.copy(category = it)) },
         label = { Text(localizedStringResource(R.string.recipe_category_req)) },
         colors = OutlinedTextFieldDefaults.colors(
-            focusedContainerColor = MaterialTheme.colorScheme.secondaryContainer,
-            unfocusedContainerColor = MaterialTheme.colorScheme.secondaryContainer,
+            focusedContainerColor = MaterialTheme.colorScheme.secondary,
+            unfocusedContainerColor = MaterialTheme.colorScheme.onPrimary,
             disabledContainerColor = MaterialTheme.colorScheme.secondaryContainer,
         ),
         modifier = Modifier.fillMaxWidth(),
@@ -207,8 +207,8 @@ fun RecipeInputIngredients(
         onValueChange = { onValueChange(recipeDetails.copy(ingredients = it)) },
         label = { Text(localizedStringResource(R.string.recipe_ingredients_req)) },
         colors = OutlinedTextFieldDefaults.colors(
-            focusedContainerColor = MaterialTheme.colorScheme.secondaryContainer,
-            unfocusedContainerColor = MaterialTheme.colorScheme.secondaryContainer,
+            focusedContainerColor = MaterialTheme.colorScheme.secondary,
+            unfocusedContainerColor = MaterialTheme.colorScheme.onPrimary,
             disabledContainerColor = MaterialTheme.colorScheme.secondaryContainer,
         ),
         modifier = Modifier.fillMaxWidth(),
@@ -229,8 +229,8 @@ fun RecipeInputProcess(
         onValueChange = { onValueChange(recipeDetails.copy(recipeProcess = it)) },
         label = { Text(localizedStringResource(R.string.recipe_process_req)) },
         colors = OutlinedTextFieldDefaults.colors(
-            focusedContainerColor = MaterialTheme.colorScheme.secondaryContainer,
-            unfocusedContainerColor = MaterialTheme.colorScheme.secondaryContainer,
+            focusedContainerColor = MaterialTheme.colorScheme.secondary,
+            unfocusedContainerColor = MaterialTheme.colorScheme.onPrimary,
             disabledContainerColor = MaterialTheme.colorScheme.secondaryContainer,
         ),
         modifier = Modifier.fillMaxWidth(),
@@ -252,8 +252,8 @@ fun RecipeInputCookingTime(
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
         label = { Text(localizedStringResource(R.string.recipe_cooking_time_req)) },
         colors = OutlinedTextFieldDefaults.colors(
-            focusedContainerColor = MaterialTheme.colorScheme.secondaryContainer,
-            unfocusedContainerColor = MaterialTheme.colorScheme.secondaryContainer,
+            focusedContainerColor = MaterialTheme.colorScheme.secondary,
+            unfocusedContainerColor = MaterialTheme.colorScheme.onPrimary,
             disabledContainerColor = MaterialTheme.colorScheme.secondaryContainer,
         ),
         modifier = Modifier.fillMaxWidth(),

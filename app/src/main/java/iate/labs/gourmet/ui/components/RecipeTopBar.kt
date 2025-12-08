@@ -57,7 +57,7 @@ fun RecipeTopBar(
             title = { Text(title) },
             modifier = modifier,
             colors = TopAppBarDefaults.topAppBarColors(
-                containerColor = Color.Red,
+                containerColor = MaterialTheme.colorScheme.primary,
                 titleContentColor = Color.White,
             ),
             navigationIcon = {
@@ -105,7 +105,7 @@ fun SearchRecipeBar(
         colors = OutlinedTextFieldDefaults.colors(
             focusedContainerColor = MaterialTheme.colorScheme.background,
             unfocusedContainerColor = MaterialTheme.colorScheme.background,
-            disabledContainerColor = MaterialTheme.colorScheme.errorContainer,
+            disabledContainerColor = MaterialTheme.colorScheme.primary,
         ),
         singleLine = true,
         enabled = true

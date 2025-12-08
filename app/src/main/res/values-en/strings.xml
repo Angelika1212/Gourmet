@@ -30,6 +30,8 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
 
+    <string name="minute">min</string>
+
     <string name="like_recipe">Like</string>
     <string name="dislike_recipe">Dislike</string>
 
