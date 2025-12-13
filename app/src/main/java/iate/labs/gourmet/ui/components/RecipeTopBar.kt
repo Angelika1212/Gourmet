@@ -1,11 +1,14 @@
 package iate.labs.gourmet.ui.components
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.LocationOn
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.DropdownMenu
@@ -15,6 +18,8 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -27,6 +32,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.room.util.TableInfo
 import iate.labs.gourmet.R
 import iate.labs.gourmet.R.string
 import iate.labs.gourmet.data.utils.LocaleManager
@@ -37,31 +43,72 @@ import java.util.Locale
 @Composable
 fun RecipeTopBar(
     title: String,
+    searchValue: String = "",
+    onSearchValueChange: (String) -> Unit,
     modifier: Modifier = Modifier,
     canNavigateBack: Boolean = false,
+    canUseSearch: Boolean = false,
     navigateUp: () -> Unit = {}
 ) {
-    CenterAlignedTopAppBar(
-        title = { Text(title) },
-        modifier = modifier,
-        colors = TopAppBarDefaults.topAppBarColors(
-            containerColor = Color.Red,
-            titleContentColor = Color.White,
-        ),
-        navigationIcon = {
-            if (canNavigateBack) {
-                IconButton(onClick = navigateUp) {
-                    Icon(
-                        imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                        contentDescription = localizedStringResource(string.back_button),
-                        tint = Color.White
-                    )
+    Column (
+        modifier = modifier.fillMaxWidth()
+    ) {
+        CenterAlignedTopAppBar(
+            title = { Text(title) },
+            modifier = modifier,
+            colors = TopAppBarDefaults.topAppBarColors(
+                containerColor = MaterialTheme.colorScheme.primary,
+                titleContentColor = Color.White,
+            ),
+            navigationIcon = {
+                if (canNavigateBack) {
+                    IconButton(onClick = navigateUp) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = localizedStringResource(string.back_button),
+                            tint = Color.White
+                        )
+                    }
                 }
+            },
+            actions = {
+                LanguageDropdown()
             }
-        },
-        actions = {
-            LanguageDropdown()
+        )
+        if (canUseSearch) {
+            SearchRecipeBar(
+                searchValue = searchValue,
+                onSearchValueChange = onSearchValueChange,
+            )
         }
+    }
+
+}
+
+@Composable
+fun SearchRecipeBar(
+    searchValue: String,
+    onSearchValueChange: (String) -> Unit,
+    modifier: Modifier = Modifier
+){
+    OutlinedTextField(
+        value = searchValue,
+        onValueChange = onSearchValueChange,
+        leadingIcon = {
+            Icon(
+                imageVector = Icons.Default.Search,
+                contentDescription = "searchBar"
+            )
+        },
+        placeholder = {Text(stringResource(R.string.recipe_search))},
+        modifier = modifier.fillMaxWidth(),
+        colors = OutlinedTextFieldDefaults.colors(
+            focusedContainerColor = MaterialTheme.colorScheme.background,
+            unfocusedContainerColor = MaterialTheme.colorScheme.background,
+            disabledContainerColor = MaterialTheme.colorScheme.primary,
+        ),
+        singleLine = true,
+        enabled = true
     )
 }
 
@@ -114,5 +161,5 @@ fun LanguageDropdown(
 @Preview
 @Composable
 fun PreviewRecipeTopBar(){
-    RecipeTopBar("Recipes", canNavigateBack = true)
+    RecipeTopBar("Recipes", searchValue = "", onSearchValueChange = {}, canNavigateBack = false, canUseSearch = true)
 }

@@ -11,6 +11,7 @@ data class Recipe(
     val name: String,
     val cookingTime: Int,
     val description: String,
+    val category: String,
     val ingredients: String,
     val recipeProcess: String,
     val isLiked: Boolean = false

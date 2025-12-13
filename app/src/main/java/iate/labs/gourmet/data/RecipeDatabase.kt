@@ -9,7 +9,7 @@ import iate.labs.gourmet.data.entity.Recipe
 
 @Database(
     entities = [Recipe::class],
-    version = 1,
+    version = 2,
     exportSchema = false)
 
 abstract class RecipeDatabase: RoomDatabase() {

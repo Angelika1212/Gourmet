@@ -20,6 +20,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -27,6 +28,8 @@ import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
@@ -70,19 +73,31 @@ fun RecipesScreen(
     viewModel: RecipesViewModel = viewModel(factory = AppViewModelProvider.Factory)
 ) {
     val homeUiState by viewModel.recipeUiState.collectAsState()
+    val searchByName by viewModel.searchByName.collectAsState()
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
+
+    val searchRecipes = if (searchByName.isBlank()) {
+        homeUiState.recipeList
+    } else {
+        homeUiState.recipeList.filter { recipe -> recipe.name.contains(searchByName, ignoreCase = true) }
+    }
 
     Scaffold(
         modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
-        topBar = { RecipeTopBar( title = localizedStringResource(R.string.recipe_all_list_title)) },
+        topBar = {
+            RecipeTopBar(
+                title = localizedStringResource(R.string.recipe_all_list_title),
+                searchValue = searchByName,
+                canUseSearch = true,
+                canNavigateBack = false,
+                onSearchValueChange = viewModel::onSearchValueChanged) },
         floatingActionButton = { RecipeEntryAction(navigateToRecipeEntry)}
     ) {
-        innerPadding ->
-        RecipeBody(
-            recipeList = homeUiState.recipeList,
-            onRecipeClick = navigateToRecipeUpdate,
-            modifier = modifier.fillMaxSize(),
-            contentPadding = innerPadding,
+        innerPadding -> RecipeBody(
+        recipeList = searchRecipes,
+        onRecipeClick = navigateToRecipeUpdate,
+        modifier = modifier.fillMaxSize().padding(top = 10.dp),
+        contentPadding = innerPadding
         )
     }
 }
@@ -92,6 +107,7 @@ fun RecipeEntryAction(navigateToRecipeEntry: () -> Unit) {
     FloatingActionButton(
         onClick = navigateToRecipeEntry,
         shape = MaterialTheme.shapes.medium,
+        containerColor = MaterialTheme.colorScheme.onSecondary,
         modifier = Modifier
             .padding(
                 end = WindowInsets.safeDrawing.asPaddingValues()
@@ -100,6 +116,7 @@ fun RecipeEntryAction(navigateToRecipeEntry: () -> Unit) {
     ) {
         Icon(
             imageVector = Icons.Default.Add,
+            tint = Color.White,
             contentDescription = localizedStringResource(R.string.recipe_entry_title))
     }
 }
@@ -127,7 +144,7 @@ fun RecipeBody(
                 recipeList = recipeList,
                 onItemClick = { onRecipeClick(it.id) },
                 contentPadding = contentPadding,
-                modifier = Modifier.padding(horizontal = dimensionResource(id = R.dimen.padding_small))
+                modifier = Modifier.padding(all = dimensionResource(id = R.dimen.padding_small))
             )
         }
 
@@ -212,7 +229,8 @@ fun RecipeHeader(
         Text(
             text = recipe.name,
             style = MaterialTheme.typography.headlineSmall,
-            fontWeight = FontWeight.Bold
+            fontWeight = FontWeight.Bold,
+            color = Color.Black
         )
         Spacer(Modifier.weight(1f))
 
@@ -230,13 +248,15 @@ fun RecipeCookingTime(
     ) {
         Text(
             text = localizedStringResource(R.string.recipe_cookingTime),
-            style = MaterialTheme.typography.titleMedium
+            style = MaterialTheme.typography.titleMedium,
+            color = Color.Black
         )
         Spacer(Modifier.weight(1f))
 
         Text(
-            text = "${recipe.cookingTime} мин",
-            style = MaterialTheme.typography.titleMedium
+            text = "${recipe.cookingTime}" + localizedStringResource(R.string.minute),
+            style = MaterialTheme.typography.titleMedium,
+            color = Color.Black
         )
     }
 }
@@ -251,7 +271,8 @@ fun RecipeDescription(
     ) {
         Text(
             text = recipe.description,
-            style = MaterialTheme.typography.bodyMedium
+            style = MaterialTheme.typography.bodyMedium,
+            color = Color.Black
         )
     }
 }
@@ -262,7 +283,6 @@ fun LikedButton(
     modifier: Modifier = Modifier,
     onClick: () -> Unit = {}
 ){
-    //переделать кнопку на обычную иконку
     val imageVector = if (isLiked) Icons.Default.Favorite else Icons.Default.FavoriteBorder
 
     IconButton(onClick = onClick) {
@@ -287,6 +307,7 @@ fun RecipeBodyPreview() {
                     cookingTime = 30,
                     description = "Шоколадный торт",
                     ingredients = "Коньяк, какао, яйца, сгущенка ...0",
+                    category = "Десерт",
                     recipeProcess = "Cook",
                     isLiked = false
                 ),
@@ -295,13 +316,14 @@ fun RecipeBodyPreview() {
                     name = "ЛИМОННЫЙ КЕКС",
                     cookingTime = 10,
                     description = "Любимый лимонный кекс",
+                    category = "Десерт",
                     ingredients = "Лимон, мука, яйца, соль, сахар",
                     recipeProcess = "Cook",
                     isLiked = true
                 )
             ),
             onRecipeClick = {},
-            modifier = Modifier
+            modifier = Modifier.fillMaxWidth().padding(all = 5.dp)
         )
     }
 }

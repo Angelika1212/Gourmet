@@ -37,6 +37,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLayoutDirection
@@ -75,7 +76,9 @@ fun HomeScreen(
         topBar = {
             RecipeTopBar(
                 title = localizedStringResource(HomeDestination.title),
-                canNavigateBack = false
+                canNavigateBack = false,
+                canUseSearch = false,
+                onSearchValueChange = {}
             )
         },
 
@@ -83,6 +86,7 @@ fun HomeScreen(
             FloatingActionButton(
                 onClick = navigateToRecipeEntry,
                 shape = MaterialTheme.shapes.medium,
+                containerColor = MaterialTheme.colorScheme.onSecondary,
                 modifier = Modifier
                     .padding(
                         end = WindowInsets.safeDrawing.asPaddingValues()
@@ -91,6 +95,7 @@ fun HomeScreen(
             ) {
                 Icon(
                     imageVector = Icons.Default.Add,
+                    tint = Color.White,
                     contentDescription = localizedStringResource(R.string.recipe_entry_title)
                 )
             }
@@ -172,6 +177,7 @@ fun HomePreviewScreen(){
                     cookingTime = 30,
                     description = "Шоколадный торт",
                     ingredients = "Коньяк, какао, яйца, сгущенка ...0",
+                    category = "Десерт",
                     recipeProcess = "Cook",
                     isLiked = true
                 ),
@@ -182,6 +188,7 @@ fun HomePreviewScreen(){
                     description = "Любимый лимонный кекс",
                     ingredients = "Лимон, мука, яйца, соль, сахар",
                     recipeProcess = "Cook",
+                    category = "Десерт",
                     isLiked = true
                 )
             ),

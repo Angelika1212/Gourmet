@@ -49,7 +49,9 @@ fun RecipeEntryScreen(
             RecipeTopBar(
                 title = localizedStringResource(R.string.recipe_entry_title),
                 canNavigateBack = canNavigateBack,
-                navigateUp = onNavigateUp
+                canUseSearch = false,
+                navigateUp = onNavigateUp,
+                onSearchValueChange = {}
             )
         }
     ) { innerPadding -> RecipeEntryBody(
@@ -97,7 +99,7 @@ fun RecipeEntryBody(
             colors = ButtonColors(
                 containerColor = Color.Green,
                 contentColor = Color.White,
-                disabledContentColor = Color.Gray,
+                disabledContentColor = Color.Black,
                 disabledContainerColor = Color.LightGray)
         ) {
             Text(text = localizedStringResource(R.string.save_action))
@@ -119,6 +121,7 @@ fun RecipeInputForm(
         verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_medium))
     ) {
         RecipeInputName(recipeDetails = recipeDetails, modifier = modifier, onValueChange = onValueChange, enabled = enabled)
+        RecipeInputCategory(recipeDetails = recipeDetails, modifier = modifier, onValueChange = onValueChange, enabled = enabled)
         RecipeInputDescription(recipeDetails = recipeDetails, modifier = modifier, onValueChange = onValueChange, enabled = enabled)
         RecipeInputIngredients(recipeDetails = recipeDetails, modifier = modifier, onValueChange = onValueChange, enabled = enabled)
         RecipeInputProcess(recipeDetails = recipeDetails, modifier = modifier, onValueChange = onValueChange, enabled = enabled)
@@ -138,8 +141,8 @@ fun RecipeInputName(
         onValueChange = { onValueChange(recipeDetails.copy(name = it)) },
         label = { Text(localizedStringResource(R.string.recipe_name_req)) },
         colors = OutlinedTextFieldDefaults.colors(
-            focusedContainerColor = MaterialTheme.colorScheme.secondaryContainer,
-            unfocusedContainerColor = MaterialTheme.colorScheme.secondaryContainer,
+            focusedContainerColor = MaterialTheme.colorScheme.secondary,
+            unfocusedContainerColor = MaterialTheme.colorScheme.onPrimary,
             disabledContainerColor = MaterialTheme.colorScheme.secondaryContainer,
         ),
         modifier = Modifier.fillMaxWidth(),
@@ -160,8 +163,30 @@ fun RecipeInputDescription(
         onValueChange = { onValueChange(recipeDetails.copy(description = it)) },
         label = { Text(localizedStringResource(R.string.recipe_description_req)) },
         colors = OutlinedTextFieldDefaults.colors(
-            focusedContainerColor = MaterialTheme.colorScheme.secondaryContainer,
-            unfocusedContainerColor = MaterialTheme.colorScheme.secondaryContainer,
+            focusedContainerColor = MaterialTheme.colorScheme.secondary,
+            unfocusedContainerColor = MaterialTheme.colorScheme.onPrimary,
+            disabledContainerColor = MaterialTheme.colorScheme.secondaryContainer,
+        ),
+        modifier = Modifier.fillMaxWidth(),
+        enabled = enabled,
+        singleLine = true
+    )
+}
+
+@Composable
+fun RecipeInputCategory(
+    recipeDetails: RecipeDetails,
+    modifier: Modifier,
+    onValueChange: (RecipeDetails) -> Unit = {},
+    enabled: Boolean = true
+){
+    OutlinedTextField(
+        value = recipeDetails.category,
+        onValueChange = { onValueChange(recipeDetails.copy(category = it)) },
+        label = { Text(localizedStringResource(R.string.recipe_category_req)) },
+        colors = OutlinedTextFieldDefaults.colors(
+            focusedContainerColor = MaterialTheme.colorScheme.secondary,
+            unfocusedContainerColor = MaterialTheme.colorScheme.onPrimary,
             disabledContainerColor = MaterialTheme.colorScheme.secondaryContainer,
         ),
         modifier = Modifier.fillMaxWidth(),
@@ -182,8 +207,8 @@ fun RecipeInputIngredients(
         onValueChange = { onValueChange(recipeDetails.copy(ingredients = it)) },
         label = { Text(localizedStringResource(R.string.recipe_ingredients_req)) },
         colors = OutlinedTextFieldDefaults.colors(
-            focusedContainerColor = MaterialTheme.colorScheme.secondaryContainer,
-            unfocusedContainerColor = MaterialTheme.colorScheme.secondaryContainer,
+            focusedContainerColor = MaterialTheme.colorScheme.secondary,
+            unfocusedContainerColor = MaterialTheme.colorScheme.onPrimary,
             disabledContainerColor = MaterialTheme.colorScheme.secondaryContainer,
         ),
         modifier = Modifier.fillMaxWidth(),
@@ -204,8 +229,8 @@ fun RecipeInputProcess(
         onValueChange = { onValueChange(recipeDetails.copy(recipeProcess = it)) },
         label = { Text(localizedStringResource(R.string.recipe_process_req)) },
         colors = OutlinedTextFieldDefaults.colors(
-            focusedContainerColor = MaterialTheme.colorScheme.secondaryContainer,
-            unfocusedContainerColor = MaterialTheme.colorScheme.secondaryContainer,
+            focusedContainerColor = MaterialTheme.colorScheme.secondary,
+            unfocusedContainerColor = MaterialTheme.colorScheme.onPrimary,
             disabledContainerColor = MaterialTheme.colorScheme.secondaryContainer,
         ),
         modifier = Modifier.fillMaxWidth(),
@@ -227,8 +252,8 @@ fun RecipeInputCookingTime(
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
         label = { Text(localizedStringResource(R.string.recipe_cooking_time_req)) },
         colors = OutlinedTextFieldDefaults.colors(
-            focusedContainerColor = MaterialTheme.colorScheme.secondaryContainer,
-            unfocusedContainerColor = MaterialTheme.colorScheme.secondaryContainer,
+            focusedContainerColor = MaterialTheme.colorScheme.secondary,
+            unfocusedContainerColor = MaterialTheme.colorScheme.onPrimary,
             disabledContainerColor = MaterialTheme.colorScheme.secondaryContainer,
         ),
         modifier = Modifier.fillMaxWidth(),
@@ -246,6 +271,7 @@ fun RecipeEntryBodyPreview(){
                 name = "ПРАГА",
                 cookingTime = "30",
                 description = "Шоколадный торт с коньяком",
+                category = "Десерт",
                 ingredients = "Мука, сахар...",
                 recipeProcess = "Время готовить"
             )
